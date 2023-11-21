@@ -12,7 +12,11 @@ def main():
     ko_img=pg.image.load("ex01/fig/3.png")
     ko_img=pg.transform.flip(ko_img,True,False)
     ko1_img=pg.transform.rotozoom(ko_img,10,1.0)
-    koimages=[ko_img,ko1_img]
+    
+    koimages=[ko_img,pg.transform.rotozoom(ko_img,2,1.0),
+              pg.transform.rotozoom(ko_img,4,1.0),pg.transform.rotozoom(ko_img,6,1.0),
+              pg.transform.rotozoom(ko_img,8,1.0),pg.transform.rotozoom(ko_img,10,1.0),pg.transform.rotozoom(ko_img,8,1.0),
+              pg.transform.rotozoom(ko_img,6,1.0),pg.transform.rotozoom(ko_img,4,1.0),pg.transform.rotozoom(ko_img,2,1.0)]
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
@@ -20,11 +24,8 @@ def main():
             tmr=0
         x=-tmr
         screen.blit(bg_img, [x, 0])
-        screen.blit(bg_img,[1599+x,0])
-        if tmr%2==0:
-            screen.blit(koimages[0],[400,200])
-        else:
-            screen.blit(koimages[1],[400,200])
+        screen.blit(bg_img,[1550+x,0])
+        screen.blit(koimages[tmr%9],[400,200])
         pg.display.update()
         tmr += 1        
         clock.tick(100)
