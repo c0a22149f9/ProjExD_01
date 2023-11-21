@@ -10,15 +10,17 @@ def main():
     tmr = 0
     ko_img=pg.image.load("ex01/fig/3.png")
     ko_img=pg.transform.flip(ko_img,True,False)
+    ko1_img=pg.transform.rotozoom(ko_img,60,1.0)
+    koimages=[ko_img,ko1_img]
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
         screen.blit(bg_img, [0, 0])
-        screen.blit(ko_img,[400,200])
+        screen.blit(koimages[1],[400,200])
         pg.display.update()
         tmr += 1        
-        clock.tick(10)
+        clock.tick(50)
 
 
 if __name__ == "__main__":
